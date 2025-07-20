@@ -22,13 +22,13 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
+      - name: Output GitHub context
+        run: echo "${{ toJSON(github.event) }}"
       - name: Install dependencies
         run: npm ci
       - name: Test code
         run: npm run test
       - name: Build code
         run: npm run build
-      - name: Output some_event data
-        run: echo "${{ toJSON(github.event) }}"
       - name: Deploy project
         run: echo "Deploying..."
